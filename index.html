@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="Nurali Abliz">
     <title>TWM Engineering Training</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script type="text/javascript" src="script.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <style>
+    <!-- <style>
         .logo {
             width: 150px;
             height: 80px;
@@ -33,6 +34,7 @@
         }
 
         .myDiv {
+
             position: relative;
             background-color: rgba(15, 15, 15, 0.5);
             height: 100vh;
@@ -48,7 +50,8 @@
             margin: 170px 40%;
         }
 
-        .innerDiv2 {          
+        .innerDiv2 {     
+            display: none;     
             position:absolute;
             height: 50px;
             width: 300px;
@@ -57,7 +60,9 @@
         }
 
         a {
+            display: flex;
             color: rgb(28, 28, 93);
+            margin-top: 5px;
         }
         span{
             color:black;
@@ -113,14 +118,14 @@
             }
 
         }
-    </style>
+    </style> -->
 
 </head>
 
 <body>
     
-    <div class="myDiv">
-        <div class="innerDiv">
+    <div class="myDiv" >
+        <div class="innerDiv" hidden>
             <div class="innerDiv2">
                 <span><i class="bi bi-arrow-repeat"></i><br><center>Loading.....</center></span>
             </div>

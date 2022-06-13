@@ -1,0 +1,105 @@
+.logo {
+    width: 150px;
+    height: 80px;
+    margin: 0px 30px;
+}
+
+li {
+    list-style-type: none;
+    vertical-align: middle;
+    height: 100px;
+}
+
+li:hover {
+    background-color: #aaaaaa;
+}
+
+.bi-check-circle-fill {
+
+    padding: 15px;
+    color: black;
+}
+
+.myDiv {
+    position: relative;
+    background-color: white;
+    height: 100vh;
+    width: 100%;
+}
+
+.innerDiv {          
+    position:absolute;
+    height: 300px;
+    width: 300px;
+    background-color:white;
+    margin: 170px 40%;
+}
+
+.innerDiv2 {     
+    display: none;     
+    position:absolute;
+    height: 50px;
+    width: 300px;
+    background-color:white;
+    margin: 120px 0px;
+}
+
+a {
+    display: flex;
+    color: rgb(28, 28, 93);
+    margin-top: 5px;
+}
+span{
+    color:black;
+    font-family: "Times New Roman";
+    margin: 0px 130px;
+}
+.bi-arrow-repeat{
+    color: burlywood;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .group {
+        margin: 50px 50px;
+        border: 1px solid black;
+        padding-left: 0px;
+    }
+
+    li:nth-child(n+1):nth-child(-n+10) {
+        border-bottom: 1px solid black;
+        border-left: 100px;
+    }
+
+}
+
+@media screen and (min-width: 1024px) {
+
+    .group {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        margin: 50px 60px;
+        padding: 0px;
+        border: 1px solid black;
+    }
+
+    li:nth-child(n+1):nth-child(-n+9) {
+        font-family: 'Helvetica', monospace;
+        font-weight: bold;
+        border-bottom: 1px solid black;
+
+    }
+
+    li:nth-child(3n-1) {
+        font-family: 'Helvetica', monospace;
+        font-weight: bold;
+        border-right: 1px solid black;
+    }
+
+    li:nth-child(3n-2) {
+        font-family: 'Helvetica', monospace;
+        font-weight: bold;
+        border-right: 1px solid black;
+    }
+
+}
