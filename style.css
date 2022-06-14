@@ -58,6 +58,10 @@ span{
     color: burlywood;
 }
 
+#modalButton{
+    color: rgb(153, 107, 22);
+}
+
 @media screen and (max-width: 1024px) {
 
     .group {
