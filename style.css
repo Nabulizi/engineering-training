@@ -60,6 +60,10 @@ span{
     color: burlywood;
 }
 
+.fa-spin{
+	color: red;
+}
+
 #modalButton{
     color: rgb(153, 107, 22);
 }
