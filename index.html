@@ -10,124 +10,16 @@
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- <style>
-        .logo {
-            width: 150px;
-            height: 80px;
-            margin: 0px 30px;
-        }
-
-        li {
-            list-style-type: none;
-            vertical-align: middle;
-            height: 100px;
-        }
-
-        li:hover {
-            background-color: #aaaaaa;
-        }
-
-        .bi-check-circle-fill {
-
-            padding: 15px;
-            color: black;
-        }
-
-        .myDiv {
-
-            position: relative;
-            background-color: rgba(15, 15, 15, 0.5);
-            height: 100vh;
-            width: 100%;
-
-        }
-
-        .innerDiv {          
-            position:absolute;
-            height: 300px;
-            width: 300px;
-            background-color:white;
-            margin: 170px 40%;
-        }
-
-        .innerDiv2 {     
-            display: none;     
-            position:absolute;
-            height: 50px;
-            width: 300px;
-            background-color:white;
-            margin: 120px 0px;
-        }
-
-        a {
-            display: flex;
-            color: rgb(28, 28, 93);
-            margin-top: 5px;
-        }
-        span{
-            color:black;
-            font-family: "Times New Roman";
-            margin: 0px 130px;
-        }
-        .bi-arrow-repeat{
-            color: burlywood;
-        }
-
-        @media screen and (max-width: 1024px) {
-
-            .group {
-                margin: 50px 50px;
-                border: 1px solid black;
-                padding-left: 0px;
-            }
-
-            li:nth-child(n+1):nth-child(-n+10) {
-                border-bottom: 1px solid black;
-                border-left: 100px;
-            }
-
-        }
-
-        @media screen and (min-width: 1024px) {
-
-            .group {
-                display: grid;
-                grid-template-columns: auto auto auto;
-                margin: 50px 60px;
-                padding: 0px;
-                border: 1px solid black;
-            }
-
-            li:nth-child(n+1):nth-child(-n+9) {
-                font-family: 'Helvetica', monospace;
-                font-weight: bold;
-                border-bottom: 1px solid black;
-
-            }
-
-            li:nth-child(3n-1) {
-                font-family: 'Helvetica', monospace;
-                font-weight: bold;
-                border-right: 1px solid black;
-            }
-
-            li:nth-child(3n-2) {
-                font-family: 'Helvetica', monospace;
-                font-weight: bold;
-                border-right: 1px solid black;
-            }
-
-        }
-    </style> -->
-
+    
 </head>
-<!-- class="bi bi-arrow-repeat" -->
+
 <body> 
     <button type="button" id="modalButton">Open Modal</button>
     <div class="myDiv">
         <div class="innerDiv" id="modal" >
             <div class="innerDiv2" >
                 <span><i class="fa fa-refresh fa-spin"></i><br><center>Loading.....</center></span>
+                <button type="button" class="closeModal">Close Modal</button>
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

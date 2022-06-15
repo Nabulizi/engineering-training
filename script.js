@@ -1,13 +1,15 @@
 console.log('Engineering Training!');
 
 const modalButton=document.getElementById("modalButton");
-// const modalContainer=document.getElementById("modal");
+const closeModalButton=document.getElementsByClassName("closeModal");
+closeModalButton.item(0).addEventListener("click",myFunction);
 modalButton.addEventListener("click",myFunction);
-let modalContainer = document.getElementById("modal");
-console.log("modalButton",modalButton)
+
+// let modalContainer = document.getElementById("modal");
+console.log("modalButton",modalButton);
+console.log("closeModalButton");
 
 function myFunction() {
-    console.log("function is called!!!");
     let modalContainer = document.getElementById("modal");
     if (modalContainer.style.display === "block") {
         modalContainer.style.display = "none";
