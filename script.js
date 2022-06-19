@@ -16,27 +16,6 @@ function myFunction(){
     modalContainer.classList.toggle("hidden");
 }
 
-
-
-
-// function JArray(Links,Titles){
-//     this.Links=Links;
-//     this.Titles=Titles;
-// }
-
-// jirasArray=new JArray(jiraLinks,jiraTitles);
-
-// console.log(jirasArray[1][1]);
-// console.log(jirasArray.jiraTitles[0]);
-
-// while(jiraLinks!=undefined && jiraTitles!=undefined){
-//     console.log(jirasArray.jiraLinks[0]);
-//     console.log(jirasArray.jiraTitles[0]);
-// }
-
-
-
-
 var  jiraTitles= [
     "Create and publish a public repository in GitHub under your personal account named 'Engineering Training'",
     "Create index.html with basic html markup and perform first commit",
