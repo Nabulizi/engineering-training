@@ -16,6 +16,27 @@ function myFunction(){
     modalContainer.classList.toggle("hidden");
 }
 
+
+
+
+// function JArray(Links,Titles){
+//     this.Links=Links;
+//     this.Titles=Titles;
+// }
+
+// jirasArray=new JArray(jiraLinks,jiraTitles);
+
+// console.log(jirasArray[1][1]);
+// console.log(jirasArray.jiraTitles[0]);
+
+// while(jiraLinks!=undefined && jiraTitles!=undefined){
+//     console.log(jirasArray.jiraLinks[0]);
+//     console.log(jirasArray.jiraTitles[0]);
+// }
+
+
+
+
 var  jiraTitles= [
     "Create and publish a public repository in GitHub under your personal account named 'Engineering Training'",
     "Create index.html with basic html markup and perform first commit",
@@ -44,10 +65,20 @@ var jiraLinks=[
     "https://totalwine.atlassian.net/browse/DIG-71120"
 ]
 
-for(let i=0;i<jiraTitles.length;i++){
-    console.log(jiraTitles[i]);
+let jiraArray=[];
+
+for (let i=0;i<jiraLinks.length;i++){
+    jiraArray.push({        
+        link: jiraLinks[i],
+        title: jiraTitles[i]
+    });
 }
 
-for(let i=0;i<jiraLinks.length;i++){
-    console.log(jiraLinks[i]);
-}
+console.log(jiraArray);
+
+// for (let i=0;i<jiraLinks.length;i++){
+//     jiraArray[i]={
+//         link:jiraLinks[i],
+//         title:jiraTitles[i]
+//     };
+// }
