@@ -1,22 +1,22 @@
 console.log('Engineering Training!');
 
-const openModalButton=document.getElementById("modalButton");
-const closeModalButton=document.getElementsByClassName("closeModal");
+const openModalButton = document.getElementById("modalButton");
+const closeModalButton = document.getElementsByClassName("closeModal");
 
 // const listItems=document.getElementsByTagName("a");
 
-openModalButton.addEventListener("click",myFunction);
-closeModalButton.item(0).addEventListener("click",myFunction);
+openModalButton.addEventListener("click", myFunction);
+closeModalButton.item(0).addEventListener("click", myFunction);
 
-console.log("modalButton",openModalButton);
-console.log("closeModalButton",closeModalButton);
+console.log("modalButton", openModalButton);
+console.log("closeModalButton", closeModalButton);
 
-function myFunction(){
+function myFunction() {
     let modalContainer = document.getElementById("modal");
     modalContainer.classList.toggle("hidden");
 }
 
-var  jiraTitles= [
+var jiraTitles = [
     "Create and publish a public repository in GitHub under your personal account named 'Engineering Training'",
     "Create index.html with basic html markup and perform first commit",
     "Add anchor tags for each completed subtasks",
@@ -30,7 +30,7 @@ var  jiraTitles= [
     "Convert page to Grid layout"
 ]
 
-var jiraLinks=[
+var jiraLinks = [
     "https://totalwine.atlassian.net/browse/DIG-70749",
     "https://totalwine.atlassian.net/browse/DIG-70771",
     "https://totalwine.atlassian.net/browse/DIG-70804",
@@ -44,16 +44,23 @@ var jiraLinks=[
     "https://totalwine.atlassian.net/browse/DIG-71120"
 ]
 
-let jiraArray=[];
+let jiraArray = [];
 
-for (let i=0;i<jiraLinks.length;i++){
-    jiraArray.push({        
+for (let i = 0; i < jiraLinks.length; i++) {
+    jiraArray.push({
         link: jiraLinks[i],
         title: jiraTitles[i]
     });
 }
 
-console.log(jiraArray);
+// console.log(jiraArray);
+
+jiraArray.forEach(element => {
+    console.log(element);
+    let listElement=document.createElement("li");
+    let ul=document.querySelector(".group");
+    ul.prepend(listElement);
+});
 
 // for (let i=0;i<jiraLinks.length;i++){
 //     jiraArray[i]={
