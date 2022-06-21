@@ -55,10 +55,10 @@ for (let i = 0; i < jiraLinks.length; i++) {
 
 console.log(jiraArray);
 
+const ul=document.querySelector(".group");
 jiraArray.forEach(element => {
     console.log(element);
     let listElement=document.createElement("li");
-    let ul=document.querySelector(".group");
     ul.prepend(listElement);
 });
 
