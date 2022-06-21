@@ -53,7 +53,7 @@ for (let i = 0; i < jiraLinks.length; i++) {
     });
 }
 
-// console.log(jiraArray);
+console.log(jiraArray);
 
 jiraArray.forEach(element => {
     console.log(element);
