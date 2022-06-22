@@ -57,23 +57,15 @@ console.log(jiraArray);
 
 const ul = document.querySelector(".group");
 const icon = "class='bi bi-check-circle-fill'";
-let indexOfArray=0;
+let str="";
 
 jiraArray.forEach(element => {
     console.log(element);
-    let listElement = document.createElement("li");
-    // ul.append(listElement);
-    ul.prepend(listElement);
-    listElement.className = "item";
-    let selectListItem = document.querySelector(".item");
 
-    const content = `<a href= ${jiraLinks[indexOfArray]}> 
-        <i ${icon}>
-        </i> ${jiraTitles[indexOfArray]} 
-    </a>`;
+    str += `<li class="item"><a href= ${element.link}> 
+    <i ${icon}>
+    </i> ${element.title} 
+    </a></li>`;
 
-    console.log(content);
-    
-    selectListItem.innerHTML=content;
-    indexOfArray+=1;
 });
+ul.innerHTML=str;
