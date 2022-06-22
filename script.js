@@ -55,16 +55,25 @@ for (let i = 0; i < jiraLinks.length; i++) {
 
 console.log(jiraArray);
 
-const ul=document.querySelector(".group");
+const ul = document.querySelector(".group");
+const icon = "class='bi bi-check-circle-fill'";
+let indexOfArray=0;
+
 jiraArray.forEach(element => {
     console.log(element);
-    let listElement=document.createElement("li");
+    let listElement = document.createElement("li");
+    // ul.append(listElement);
     ul.prepend(listElement);
-});
+    listElement.className = "item";
+    let selectListItem = document.querySelector(".item");
 
-// for (let i=0;i<jiraLinks.length;i++){
-//     jiraArray[i]={
-//         link:jiraLinks[i],
-//         title:jiraTitles[i]
-//     };
-// }
+    const content = `<a href= ${jiraLinks[indexOfArray]}> 
+        <i ${icon}>
+        </i> ${jiraTitles[indexOfArray]} 
+    </a>`;
+
+    console.log(content);
+    
+    selectListItem.innerHTML=content;
+    indexOfArray+=1;
+});
