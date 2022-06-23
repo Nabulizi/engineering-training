@@ -5,11 +5,15 @@ const closeModalButton = document.getElementsByClassName("closeModal");
 
 // const listItems=document.getElementsByTagName("a");
 
-openModalButton.addEventListener("click", myFunction);
+openModalButton.addEventListener("click", loadData);
 closeModalButton.item(0).addEventListener("click", myFunction);
 
 console.log("modalButton", openModalButton);
 console.log("closeModalButton", closeModalButton);
+
+function loadData(){
+    setTimeout(myFunction,2000)
+}
 
 function myFunction() {
     let modalContainer = document.getElementById("modal");
@@ -69,3 +73,5 @@ jiraArray.forEach(element => {
 
 });
 ul.innerHTML=str;
+
+
