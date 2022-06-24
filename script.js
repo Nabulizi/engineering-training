@@ -3,8 +3,6 @@ console.log('Engineering Training!');
 const openModalButton = document.getElementById("modalButton");
 const closeModalButton = document.getElementsByClassName("closeModal");
 
-// const listItems=document.getElementsByTagName("a");
-
 openModalButton.addEventListener("click", loadData);
 closeModalButton.item(0).addEventListener("click", myFunction);
 
@@ -13,9 +11,14 @@ console.log("closeModalButton", closeModalButton);
 
 function loadData(){
     setTimeout(myFunction,2000)
+    setTimeout(renderData,5000)
+    setTimeout(()=>{
+        let modalContainer = document.getElementById("modal");
+        modalContainer.classList.add("hidden");
+    },6000)
 }
 
-function myFunction() {
+function myFunction(mycallback) {
     let modalContainer = document.getElementById("modal");
     modalContainer.classList.toggle("hidden");
 }
@@ -62,16 +65,17 @@ console.log(jiraArray);
 const ul = document.querySelector(".group");
 const icon = "class='bi bi-check-circle-fill'";
 let str="";
+function renderData(){
+    jiraArray.forEach(element => {
+        // console.log(element);   
+        str += `<li class="item"><a href= ${element.link}> 
+        <i ${icon}>
+        </i> ${element.title} 
+        </a></li>`;
+    
+    });
+    ul.innerHTML=str;
+}
 
-jiraArray.forEach(element => {
-    console.log(element);
-
-    str += `<li class="item"><a href= ${element.link}> 
-    <i ${icon}>
-    </i> ${element.title} 
-    </a></li>`;
-
-});
-ul.innerHTML=str;
 
 
