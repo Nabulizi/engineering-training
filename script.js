@@ -52,7 +52,6 @@ var jiraLinks = [
 ]
 
 let jiraArray = [];
-
 for (let i = 0; i < jiraLinks.length; i++) {
     jiraArray.push({
         link: jiraLinks[i],
@@ -69,10 +68,11 @@ function renderData() {
 
     let myPromise = new Promise((resolve, reject) => {
         jiraArray.forEach(element => {
-            // console.log(element);   
-            response += `<li class="item"><a href= ${element.link}> 
+            // console.log(element);  
+            let {link, title} = element; 
+            response += `<li class="item"><a href= ${link}> 
         <i class="bi bi-check-circle-fill">
-        </i> ${element.title} 
+        </i> ${title} 
         </a></li>`;
         });
         resolve(response);
