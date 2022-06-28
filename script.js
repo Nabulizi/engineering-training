@@ -9,9 +9,17 @@ closeModalButton.item(0).addEventListener("click", myFunction);
 console.log("modalButton", openModalButton);
 console.log("closeModalButton", closeModalButton);
 
+let dataLoaded=false;
+
 function loadData() {
     setTimeout(myFunction,)
-    setTimeout(renderData, 5000)
+
+    if(dataLoaded==false){
+        setTimeout(renderData, 2000)
+    }else{
+        console.log("Alrady loaded");
+    }
+ 
     setTimeout(() => {
         let modalContainer = document.getElementById("modal");
         modalContainer.classList.add("hidden");
@@ -77,8 +85,9 @@ function renderData() {
         });
         resolve(response);
     })
-    // ul.innerHTML = response;
+
     .then(()=>{
+        dataLoaded=true;
         ul.innerHTML = response;
         return response;
     })
