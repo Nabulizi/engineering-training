@@ -38,17 +38,25 @@ for (let i = 0; i < jiraLinks.length; i++) {
 console.log(jiraArray);
 
 const utils = {
-    response: "",
-    dataLoaded:false,
-    
+
     loadData: function () {
+        let dataLoaded=false;
         setTimeout(toggleFunction,)
 
-        if (this.dataLoaded == false) {
-        setTimeout(this.renderData, 2000)
+        if (dataLoaded == false) {
+            setTimeout(() => { 
+                this.renderData().then((response) => { 
+                    dataLoaded = true; 
+                    const ul = document.querySelector(".group"); 
+                    ul.innerHTML = response; 
+                    console.log(response+"Executed1")
+                    return response; 
+                }) 
+            }, 2000)
+
         } else {
             console.log("Alrady loaded");
-        }       
+        }
 
         setTimeout(() => {
             let modalContainer = document.getElementById("modal");
@@ -57,24 +65,17 @@ const utils = {
     },
 
     renderData: function () {
-        this.response="";
-        let myPromise = new Promise((resolve, reject) => {
+        let response = "";
+        return  new Promise((resolve, reject) => {
             jiraArray.forEach(element => {
                 let { link, title } = element;
-                console.log("\n"+this.response);
-                this.response += `<li class="item"><a href= ${link}> 
+                response += `<li class="item"><a href= ${link}> 
             <i class="bi bi-check-circle-fill">
             </i> ${title} 
             </a></li>`;
             });
-            resolve(this.response);
-        })
-
-        .then(() => {
-            dataLoaded = true;
-            const ul = document.querySelector(".group");
-            ul.innerHTML = this.response;
-            return this.response;
+            resolve(response);
+            console.log(response+"Executed222")
         })
     }
 }
@@ -93,51 +94,3 @@ closeModalButton.item(0).addEventListener("click", toggleFunction);
 
 console.log("modalButton", openModalButton);
 console.log("closeModalButton", closeModalButton);
-
-
-
-// let dataLoaded = false;
-
-// function loadData() {
-//     setTimeout(myFunction,)
-
-//     if(dataLoaded==false){
-//         setTimeout(renderData, 2000)
-//     }else{
-//         console.log("Alrady loaded");
-//     }
-
-//     setTimeout(() => {
-//         let modalContainer = document.getElementById("modal");
-//         modalContainer.classList.add("hidden");
-//     }, 4000)
-// }
-
-
-
-// const ul = document.querySelector(".group");
-// let response = "";
-
-// function renderData() {
-
-//     let myPromise = new Promise((resolve, reject) => {
-//         jiraArray.forEach(element => {
-//             // console.log(element);  
-//             let { link, title } = element;
-//             response += `<li class="item"><a href= ${link}> 
-//         <i class="bi bi-check-circle-fill">
-//         </i> ${title} 
-//         </a></li>`;
-//         });
-//         resolve(response);
-//     })
-
-//         .then(() => {
-//             dataLoaded = true;
-//             ul.innerHTML = response;
-//             return response;
-//         })
-// }
-
-
-
