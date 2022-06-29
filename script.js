@@ -1,36 +1,5 @@
 console.log('Engineering Training!');
 
-const openModalButton = document.getElementById("modalButton");
-const closeModalButton = document.getElementsByClassName("closeModal");
-
-openModalButton.addEventListener("click", loadData);
-closeModalButton.item(0).addEventListener("click", myFunction);
-
-console.log("modalButton", openModalButton);
-console.log("closeModalButton", closeModalButton);
-
-let dataLoaded=false;
-
-function loadData() {
-    setTimeout(myFunction,)
-
-    if(dataLoaded==false){
-        setTimeout(renderData, 2000)
-    }else{
-        console.log("Alrady loaded");
-    }
- 
-    setTimeout(() => {
-        let modalContainer = document.getElementById("modal");
-        modalContainer.classList.add("hidden");
-    }, 6000)
-}
-
-function myFunction() {
-    let modalContainer = document.getElementById("modal");
-    modalContainer.classList.toggle("hidden");
-}
-
 var jiraTitles = [
     "Create and publish a public repository in GitHub under your personal account named 'Engineering Training'",
     "Create index.html with basic html markup and perform first commit",
@@ -66,32 +35,109 @@ for (let i = 0; i < jiraLinks.length; i++) {
         title: jiraTitles[i]
     });
 }
-
 console.log(jiraArray);
 
-const ul = document.querySelector(".group");
-let response = "";
+const utils = {
+    response: "",
+    dataLoaded:false,
+    
+    loadData: function () {
+        setTimeout(toggleFunction,)
 
-function renderData() {
+        if (this.dataLoaded == false) {
+        setTimeout(this.renderData, 2000)
+        } else {
+            console.log("Alrady loaded");
+        }       
 
-    let myPromise = new Promise((resolve, reject) => {
-        jiraArray.forEach(element => {
-            // console.log(element);  
-            let {link, title} = element; 
-            response += `<li class="item"><a href= ${link}> 
-        <i class="bi bi-check-circle-fill">
-        </i> ${title} 
-        </a></li>`;
-        });
-        resolve(response);
-    })
+        setTimeout(() => {
+            let modalContainer = document.getElementById("modal");
+            modalContainer.classList.add("hidden");
+        }, 4000)
+    },
 
-    .then(()=>{
-        dataLoaded=true;
-        ul.innerHTML = response;
-        return response;
-    })
+    renderData: function () {
+        this.response="";
+        let myPromise = new Promise((resolve, reject) => {
+            jiraArray.forEach(element => {
+                let { link, title } = element;
+                console.log("\n"+this.response);
+                this.response += `<li class="item"><a href= ${link}> 
+            <i class="bi bi-check-circle-fill">
+            </i> ${title} 
+            </a></li>`;
+            });
+            resolve(this.response);
+        })
+
+        .then(() => {
+            dataLoaded = true;
+            const ul = document.querySelector(".group");
+            ul.innerHTML = this.response;
+            return this.response;
+        })
+    }
 }
+
+function toggleFunction() {
+    let modalContainer = document.getElementById("modal");
+    modalContainer.classList.toggle("hidden");
+}
+
+
+const openModalButton = document.getElementById("modalButton");
+const closeModalButton = document.getElementsByClassName("closeModal");
+
+openModalButton.addEventListener("click", utils.loadData());
+closeModalButton.item(0).addEventListener("click", toggleFunction);
+
+console.log("modalButton", openModalButton);
+console.log("closeModalButton", closeModalButton);
+
+
+
+// let dataLoaded = false;
+
+// function loadData() {
+//     setTimeout(myFunction,)
+
+//     if(dataLoaded==false){
+//         setTimeout(renderData, 2000)
+//     }else{
+//         console.log("Alrady loaded");
+//     }
+
+//     setTimeout(() => {
+//         let modalContainer = document.getElementById("modal");
+//         modalContainer.classList.add("hidden");
+//     }, 4000)
+// }
+
+
+
+// const ul = document.querySelector(".group");
+// let response = "";
+
+// function renderData() {
+
+//     let myPromise = new Promise((resolve, reject) => {
+//         jiraArray.forEach(element => {
+//             // console.log(element);  
+//             let { link, title } = element;
+//             response += `<li class="item"><a href= ${link}> 
+//         <i class="bi bi-check-circle-fill">
+//         </i> ${title} 
+//         </a></li>`;
+//         });
+//         resolve(response);
+//     })
+
+//         .then(() => {
+//             dataLoaded = true;
+//             ul.innerHTML = response;
+//             return response;
+//         })
+// }
 
 
 
