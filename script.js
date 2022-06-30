@@ -49,7 +49,6 @@ const utils = {
                     dataLoaded = true; 
                     const ul = document.querySelector(".group"); 
                     ul.innerHTML = response; 
-                    console.log(response+"Executed1")
                     return response; 
                 }) 
             }, 2000)
@@ -75,7 +74,6 @@ const utils = {
             </a></li>`;
             });
             resolve(response);
-            console.log(response+"Executed222")
         })
     }
 }
@@ -94,3 +92,13 @@ closeModalButton.item(0).addEventListener("click", toggleFunction);
 
 console.log("modalButton", openModalButton);
 console.log("closeModalButton", closeModalButton);
+
+class JiraHandler{
+    constructor(links,titles){
+        this.link=links;
+        this.title=titles;
+    }
+}
+
+const jiraHandler= new JiraHandler(jiraLinks,jiraTitles);
+console.log(jiraHandler);
