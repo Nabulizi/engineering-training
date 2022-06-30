@@ -28,14 +28,28 @@ var jiraLinks = [
     "https://totalwine.atlassian.net/browse/DIG-71120"
 ]
 
+class JiraHandler{
+    constructor(link,title){
+        this.link=link;
+        this.title=title;
+    }
+
+    getLinks(){
+        return this.link;
+    }
+
+
+    getTitles(){
+        return this.title;
+    }
+}
+
 let jiraArray = [];
 for (let i = 0; i < jiraLinks.length; i++) {
-    jiraArray.push({
-        link: jiraLinks[i],
-        title: jiraTitles[i]
-    });
+    jiraArray[i]=new JiraHandler(jiraLinks[i],jiraTitles[i]);
+    // console.log(jiraArray[i].getLinks()+"Links only");
+    // console.log(jiraArray[i].getTitles()+"Tiles only");
 }
-console.log(jiraArray);
 
 const utils = {
 
@@ -93,12 +107,3 @@ closeModalButton.item(0).addEventListener("click", toggleFunction);
 console.log("modalButton", openModalButton);
 console.log("closeModalButton", closeModalButton);
 
-class JiraHandler{
-    constructor(links,titles){
-        this.link=links;
-        this.title=titles;
-    }
-}
-
-const jiraHandler= new JiraHandler(jiraLinks,jiraTitles);
-console.log(jiraHandler);
