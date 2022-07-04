@@ -29,27 +29,25 @@ var jiraLinks = [
 ]
 
 class JiraHandler{
-    constructor(link,title){
-        this.link=link;
-        this.title=title;
+    constructor(links,titles){
+        this.jirasObject=[];
+        this.links=links;
+        this.titles=titles;
+        this.createJiraObject();
     }
 
-    getLinks(){
-        return this.link;
-    }
-
-
-    getTitles(){
-        return this.title;
+    createJiraObject(){
+        for (let i = 0; i < this.links.length; i++) {
+            this.jirasObject.push({        
+                link:this.links[i],
+                title:this.titles[i]
+            })
+        }  
     }
 }
 
-let jiraArray = [];
-for (let i = 0; i < jiraLinks.length; i++) {
-    jiraArray[i]=new JiraHandler(jiraLinks[i],jiraTitles[i]);
-    // console.log(jiraArray[i].getLinks()+"Links only");
-    // console.log(jiraArray[i].getTitles()+"Tiles only");
-}
+const jiraHandler=new JiraHandler(jiraLinks,jiraTitles)
+
 
 const utils = {
 
@@ -80,7 +78,7 @@ const utils = {
     renderData: function () {
         let response = "";
         return  new Promise((resolve, reject) => {
-            jiraArray.forEach(element => {
+            jiraHandler.jirasObject.forEach(element => {
                 let { link, title } = element;
                 response += `<li class="item"><a href= ${link}> 
             <i class="bi bi-check-circle-fill">
@@ -96,7 +94,6 @@ function toggleFunction() {
     let modalContainer = document.getElementById("modal");
     modalContainer.classList.toggle("hidden");
 }
-
 
 const openModalButton = document.getElementById("modalButton");
 const closeModalButton = document.getElementsByClassName("closeModal");
