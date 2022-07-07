@@ -28,41 +28,48 @@ var jiraLinks = [
     "https://totalwine.atlassian.net/browse/DIG-71120"
 ]
 
-class JiraHandler{
-    constructor(links,titles){
-        this.jirasObject=[];
-        this.links=links;
-        this.titles=titles;
+let jiraTemplate = {
+    icon: "bi bi-check-circle-fill",
+};
+
+class JiraHandler {
+    constructor(links, titles) {
+        this.jirasObject = [];
+        this.links = links;
+        this.titles = titles;
         this.createJiraObject();
     }
 
-    createJiraObject(){
+    createJiraObject() {
+        let jiraTemplate = {
+            icon: "bi bi-check-circle-fill",
+        };
         for (let i = 0; i < this.links.length; i++) {
-            this.jirasObject.push({        
-                link:this.links[i],
-                title:this.titles[i]
+            this.jirasObject.push({
+                link: this.links[i],
+                title: this.titles[i],
+                ...jiraTemplate
             })
-        }  
+        }
     }
 }
 
-const jiraHandler=new JiraHandler(jiraLinks,jiraTitles)
-
+const jiraHandler = new JiraHandler(jiraLinks, jiraTitles)
 
 const utils = {
 
     loadData: function () {
-        let dataLoaded=false;
+        let dataLoaded = false;
         setTimeout(toggleFunction,)
 
         if (dataLoaded == false) {
-            setTimeout(() => { 
-                this.renderData().then((response) => { 
-                    dataLoaded = true; 
-                    const ul = document.querySelector(".group"); 
-                    ul.innerHTML = response; 
-                    return response; 
-                }) 
+            setTimeout(() => {
+                this.renderData().then((response) => {
+                    dataLoaded = true;
+                    const ul = document.querySelector(".group");
+                    ul.innerHTML = response;
+                    return response;
+                })
             }, 2000)
 
         } else {
@@ -77,11 +84,12 @@ const utils = {
 
     renderData: function () {
         let response = "";
-        return  new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             jiraHandler.jirasObject.forEach(element => {
-                let { link, title } = element;
+                let { link, title,icon} = element;
+                console.log(icon);
                 response += `<li class="item"><a href= ${link}> 
-            <i class="bi bi-check-circle-fill">
+            <i class="${icon}">
             </i> ${title} 
             </a></li>`;
             });
@@ -103,4 +111,3 @@ closeModalButton.item(0).addEventListener("click", toggleFunction);
 
 console.log("modalButton", openModalButton);
 console.log("closeModalButton", closeModalButton);
-
