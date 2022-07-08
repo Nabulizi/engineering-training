@@ -68,26 +68,27 @@ class JiraHandler {
 
 const jiraHandler = new JiraHandler(jiraLinks, jiraTitles)
 
+function initModalButton(){
+    var dataLoaded = false
+    dataLoaded = true;
+}
+
 const utils = {
 
-    loadData: function () {
-        let dataLoaded = false;
+    loadData: function (callback) {
+ 
         setTimeout(toggleFunction,)
 
-        if (dataLoaded == false) {
-            setTimeout(() => {
-                this.renderData().then((response) => {
-                    dataLoaded = true;
-                    const ul = document.querySelector(".group");
-                    ul.innerHTML = response;
-                    return response;
-                })
-            }, 2000)
+        setTimeout(() => {
+            this.renderData().then((response) => {
+                const ul = document.querySelector(".group");
+                ul.innerHTML = response;
+                return response;
+            })
+        }, 2000)
 
-        } else {
-            console.log("Alrady loaded");
-        }
-
+        callback();
+    
         setTimeout(() => {
             let modalContainer = document.getElementById("modal");
             modalContainer.classList.add("hidden");
@@ -118,8 +119,11 @@ function toggleFunction() {
 const openModalButton = document.getElementById("modalButton");
 const closeModalButton = document.getElementsByClassName("closeModal");
 
-openModalButton.addEventListener("click", utils.loadData());
+openModalButton.addEventListener("click", utils.loadData(initModalButton));
+
+
 closeModalButton.item(0).addEventListener("click", toggleFunction);
 
 console.log("modalButton", openModalButton);
 console.log("closeModalButton", closeModalButton);
+
