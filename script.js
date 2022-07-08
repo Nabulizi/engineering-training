@@ -68,16 +68,27 @@ class JiraHandler {
 
 const jiraHandler = new JiraHandler(jiraLinks, jiraTitles)
 
+
 function initModalButton(){
     var dataLoaded = false
-    dataLoaded = true;
+    const openModalButton = document.getElementById("modalButton");
+    openModalButton.addEventListener("click",()=>{
+        if(dataLoaded===true){
+            return ;
+        }
+        utils.loadData(()=>{
+        dataLoaded = true;
+        })
+    } );   
 }
+
+initModalButton();
 
 const utils = {
 
     loadData: function (callback) {
- 
-        setTimeout(toggleFunction,)
+        console.log("Test!!!!!");
+        setTimeout(toggleFunction,1000)
 
         setTimeout(() => {
             this.renderData().then((response) => {
@@ -118,8 +129,6 @@ function toggleFunction() {
 
 const openModalButton = document.getElementById("modalButton");
 const closeModalButton = document.getElementsByClassName("closeModal");
-
-openModalButton.addEventListener("click", utils.loadData(initModalButton));
 
 
 closeModalButton.item(0).addEventListener("click", toggleFunction);
