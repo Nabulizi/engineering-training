@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const path = require('path');
+const router=express.Router();    
+// const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Welcome to My Homepage')
-})
+router.get('/',(req,res)=>{
+  res.sendFile(path.join(__dirname+'/index.html'));
+});
 
-app.listen(port, () => {
-  console.log(`My app is listening on port ${port}`)
-})
+// app.get('/', (req, res) => {
+//   res.send('Welcome to My Homepage')
+// })
+
+app.use('/',router);
+
+app.listen(process.env.port || 3000);
