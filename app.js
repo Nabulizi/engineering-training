@@ -8,6 +8,11 @@ router.get('/',(req,res)=>{
   res.sendFile(path.join(__dirname+'/index.html'));
 });
 
+router.get('/getJiraTickets',(req,res)=>{
+  let jirasObject={};
+  res.json(JSON.stringify(jirasObject))
+})
+
 // app.get('/', (req, res) => {
 //   res.send('Welcome to My Homepage')
 // })
