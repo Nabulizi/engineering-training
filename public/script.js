@@ -89,7 +89,12 @@
   
     const utils = {
 
-        loadData: function (callback) {
+        loadData: async function (callback) {
+          
+            const response = await fetch('/getJiraTickets');
+            const data = await response.json();
+            console.log(data); 
+
             setTimeout(toggleFunction, 1000)
 
             setTimeout(() => {

@@ -9,17 +9,13 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/getJiraTickets',(req,res)=>{
-  let jirasObject={};
-  res.json(JSON.stringify(jirasObject))
+  let jirasObject={jirasObject:[]};
+  res.json(jirasObject)
 })
-
-// app.get('/', (req, res) => {
-//   res.send('Welcome to My Homepage')
-// })
 
 app.use('/',router);
 console.log(__dirname);
-app.use('/public',express.static(__dirname+'/public'))
+app.use(express.static('public'))
 
 app.listen(process.env.port || 3000);
 
