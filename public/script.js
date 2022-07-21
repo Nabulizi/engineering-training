@@ -4,50 +4,48 @@
 
     function initModalButton() {
         
-        return new Promise((resolve,reject)=>{
+        return new Promise((resolve)=>{
             var dataLoaded = false;
             const openModalButton = document.getElementById("modalButton");
             openModalButton.addEventListener("click", () => {
                 if (dataLoaded === false) {
-                    resolve();
+                    utils.loadData(()=>{
+                        resolve();
+                        dataLoaded = true;
+                    })
                 }               
             });
 
         })
-        .then(utils.loadData(() => {
-            dataLoaded = true;
-        }));
+        // .then(utils.loadData(() => {
+        //     dataLoaded = true;
+        // }));
     }
   
     const utils = {
-
         loadData: async function (callback) {
+            const response = await fetch('/getJiraTickets');
+            const data = await response.json();
+            console.log(data); 
           
-            setTimeout(toggleFunction, 1000)
-
-            setTimeout(() => {
-                this.renderData().then((response) => {
-                    const ul = document.querySelector(".group");
-                    ul.innerHTML = response;
-                    return response;
-                })
-            }, 2000)
-
+            toggleFunction();
+            
+            this.renderData(data).then((response) => {
+                const ul = document.querySelector(".group");
+                ul.innerHTML = response;
+                return response;
+            })
+            
             callback();
-
-            setTimeout(() => {
-                let modalContainer = document.getElementById("modal");
-                modalContainer.classList.add("hidden");
-            }, 4000)
+          
+            let modalContainer = document.getElementById("modal");
+            modalContainer.classList.add("hidden");           
         },
 
-        renderData: async function () {
+        renderData: function (data) {
             let response = "";
-            const ressult = await fetch('/getJiraTickets');
-            const data = await ressult.json();
-            console.log(data); 
-            return new Promise((resolve, reject) => {
-                this.data.forEach(element => {
+            return new Promise((resolve) => {
+               data.jirasObject.forEach(element => {
                     let { link, title, icon } = element;
                     response += `<li class="item"><a href= ${link}> 
             <i class="${icon}">
@@ -59,18 +57,13 @@
         }
     }
 
-
-   
-
     function toggleFunction() {
         let modalContainer = document.getElementById("modal");
         modalContainer.classList.toggle("hidden");
     }
 
-
     const openModalButton = document.getElementById("modalButton");
     const closeModalButton = document.getElementsByClassName("closeModal");
-
 
     closeModalButton.item(0).addEventListener("click", toggleFunction);
 

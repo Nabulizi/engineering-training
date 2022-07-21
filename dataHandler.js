@@ -1,5 +1,5 @@
 
-    var jiraTitles = [
+    const jiraTitles = [
         "Create and publish a public repository in GitHub under your personal account named 'Engineering Training'",
         "Create index.html with basic html markup and perform first commit",
         "Add anchor tags for each completed subtasks",
@@ -13,7 +13,7 @@
         "Convert page to Grid layout"
     ]
 
-    var jiraLinks = [
+    const jiraLinks = [
         "https://totalwine.atlassian.net/browse/DIG-70749",
         "https://totalwine.atlassian.net/browse/DIG-70771",
         "https://totalwine.atlassian.net/browse/DIG-70804",
@@ -66,4 +66,4 @@
 
     const jiraHandler = new JiraHandler(jiraLinks, jiraTitles)
 
-    module.exports
+    module.exports = jiraHandler;

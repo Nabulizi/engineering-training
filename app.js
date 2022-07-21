@@ -10,9 +10,8 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/getJiraTickets',(req,res)=>{
-  let jirasObject={jirasObject:dataHandler.jirasObject};
-  res.json(jirasObject)
-})
+  res.json({"jirasObject":dataHandler.jirasObject});
+});
 
 app.use('/',router);
 console.log(__dirname);
