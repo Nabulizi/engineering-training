@@ -1,4 +1,5 @@
 const express = require('express');
+const dataHandler=require('./dataHandler');
 const app = express();
 const path = require('path');
 const router=express.Router();    
@@ -9,7 +10,7 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/getJiraTickets',(req,res)=>{
-  let jirasObject={jirasObject:[]};
+  let jirasObject={jirasObject:dataHandler.jirasObject};
   res.json(jirasObject)
 })
 
