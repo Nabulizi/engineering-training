@@ -17,9 +17,6 @@
             });
 
         })
-        // .then(utils.loadData(() => {
-        //     dataLoaded = true;
-        // }));
     }
   
     const utils = {

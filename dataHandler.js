@@ -1,3 +1,38 @@
+const { Octokit } = require("@octokit/rest");
+require('dotenv').config();
+
+    const octokit = new Octokit({ 
+        auth: process.env.GITHUB_TOKEN,
+        baseUrl: 'https://api.github.com',
+        log: {
+            debug: () => {},
+            info: () => {},
+            warn: console.warn,
+            error: console.error
+        },
+        request: {
+            agent: undefined,
+            fetch: undefined,
+            timeout: 0
+        }
+    });
+
+    const getCommits = async ()=>{
+        return new Promise( async (resolve)=>{
+            const commits = await octokit.rest.repos.listCommits({
+                owner:"Nabulizi",
+                repo:"engineering-training",
+              });
+              resolve(commits);
+        })
+    }
+
+    getCommits().then((listOfCommits)=>{
+        console.log(listOfCommits)
+    });
+
+
+      
 
     const jiraTitles = [
         "Create and publish a public repository in GitHub under your personal account named 'Engineering Training'",
