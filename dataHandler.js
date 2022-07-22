@@ -17,19 +17,19 @@ require('dotenv').config();
         }
     });
 
-    const getCommits = async ()=>{
-        return new Promise( async (resolve)=>{
-            const commits = await octokit.rest.repos.listCommits({
-                owner:"Nabulizi",
-                repo:"engineering-training",
-              });
-              resolve(commits);
-        })
-    }
+    // const getCommits = async ()=>{
+    //     return new Promise( async (resolve)=>{
+    //         const commits = await octokit.rest.repos.listCommits({
+    //             owner:"Nabulizi",
+    //             repo:"engineering-training",
+    //           });
+    //           resolve(commits);
+    //     })
+    // }
 
-    getCommits().then((listOfCommits)=>{
-        console.log(listOfCommits)
-    });
+    // getCommits().then((listOfCommits)=>{
+    //     console.log(listOfCommits)
+    // });
 
 
       
@@ -85,6 +85,7 @@ require('dotenv').config();
             this.links = links;
             this.titles = titles;
             this.createJiraObject();
+            this.fetchGitHubData();
         }
 
         createJiraObject() {
@@ -96,6 +97,22 @@ require('dotenv').config();
                     ...icon
                 })
             }
+        }
+
+        async fetchGitHubData(){
+            return new Promise( async (resolve)=>{
+                const commits = await octokit.rest.repos.listCommits({
+                    owner:"Nabulizi",
+                    repo:"engineering-training",
+                  });
+                  resolve(commits);
+            })
+            .then((listOfCommits)=>{
+                console.log(listOfCommits);
+                for(let index=0;index<listOfCommits.data.length;index++){
+                    console.log("Commmit Massage : "+listOfCommits.data[index].commit.message);
+                }
+            })
         }
     }
 
