@@ -1,5 +1,6 @@
 const { Octokit } = require("@octokit/rest");
 require('dotenv').config();
+var JiraApi = require('jira-client');
 
     const octokit = new Octokit({ 
         auth: process.env.GITHUB_TOKEN,
@@ -17,22 +18,34 @@ require('dotenv').config();
         }
     });
 
-    // const getCommits = async ()=>{
-    //     return new Promise( async (resolve)=>{
-    //         const commits = await octokit.rest.repos.listCommits({
-    //             owner:"Nabulizi",
-    //             repo:"engineering-training",
-    //           });
-    //           resolve(commits);
-    //     })
-    // }
+    // Initialize
+    var jira = new JiraApi({
+        protocol: 'https',
+        host: 'jira.somehost.com',
+        username: process.env.JIRA_USER_NAME,
+        password: process.env.GIRA_TOKEN,
+        apiVersion: '2',
+        strictSSL: true
+     });
 
-    // getCommits().then((listOfCommits)=>{
-    //     console.log(listOfCommits)
-    // });
+     async function getStatus(issueNumber){
+        return new Promise( async (resolve)=>{
+            console.log("start");
+            const myIssue= await jira.findIssue(issueNumber);
+            console.log(myIssue);
+            resolve(myIssue);
+        })       
+        .then((issue)=> {
+            console.log('Status: ' + issue.fields.status.name);
+        })
+        .catch((err)=> {
+            console.error(err);
+        });
 
+    }
+    
+    getStatus("72591");
 
-      
 
     const jiraTitles = [
         "Create and publish a public repository in GitHub under your personal account named 'Engineering Training'",
@@ -108,9 +121,9 @@ require('dotenv').config();
                   resolve(commits);
             })
             .then((listOfCommits)=>{
-                console.log(listOfCommits);
+                // console.log(listOfCommits);
                 for(let index=0;index<listOfCommits.data.length;index++){
-                    console.log("Commmit Massage : "+listOfCommits.data[index].commit.message);
+                    // console.log("Commmit Massage : "+listOfCommits.data[index].commit.message);
                 }
             })
         }
