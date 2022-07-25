@@ -21,7 +21,7 @@ var JiraApi = require('jira-client');
     // Initialize
     var jira = new JiraApi({
         protocol: 'https',
-        host: 'jira.somehost.com',
+        host: 'totalwine.atlassian.net',
         username: process.env.JIRA_USER_NAME,
         password: process.env.GIRA_TOKEN,
         apiVersion: '2',
@@ -30,9 +30,7 @@ var JiraApi = require('jira-client');
 
      async function getStatus(issueNumber){
         return new Promise( async (resolve)=>{
-            console.log("start");
             const myIssue= await jira.findIssue(issueNumber);
-            console.log(myIssue);
             resolve(myIssue);
         })       
         .then((issue)=> {
