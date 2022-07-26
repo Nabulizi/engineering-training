@@ -119,10 +119,21 @@ var JiraApi = require('jira-client');
                   resolve(commits);
             })
             .then((listOfCommits)=>{
-                // console.log(listOfCommits);
-                for(let index=0;index<listOfCommits.data.length;index++){
+                let jiraTicketNumber=[];
+                const regEx=/([A-Z][A-Z0-9]+-[0-9]+)/g
+                for(let index=0;index<listOfCommits.data.length;index++){                   
                     // console.log("Commmit Massage : "+listOfCommits.data[index].commit.message);
+                    let ticketNum=listOfCommits.data[index].commit.message.match(regEx);
+                    let indx=jiraTicketNumber.indexOf(ticketNum);
+
+                    if(ticketNum != null && indx === -1){    
+                        jiraTicketNumber.push(ticketNum);
+                    }else{
+                        console.log(ticketNum + ' Jira ticket number already exists');
+                    }
+                    
                 }
+                console.log(jiraTicketNumber);
             })
         }
     }
