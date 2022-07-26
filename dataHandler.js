@@ -2,6 +2,7 @@ const { Octokit } = require("@octokit/rest");
 require('dotenv').config();
 var JiraApi = require('jira-client');
 
+    // Initialize
     const octokit = new Octokit({ 
         auth: process.env.GITHUB_TOKEN,
         baseUrl: 'https://api.github.com',
@@ -34,7 +35,8 @@ var JiraApi = require('jira-client');
             resolve(myIssue);
         })       
         .then((issue)=> {
-            console.log('Status: ' + issue.fields.status.name);
+            // console.log('Status: ' + issue.fields.status.name);
+            console.log('Summary: ' + issue.fields.summary);
         })
         .catch((err)=> {
             console.error(err);
@@ -42,7 +44,7 @@ var JiraApi = require('jira-client');
 
     }
     
-    getStatus("72591");
+    // getStatus("DIG-72242");
 
 
     const jiraTitles = [
@@ -93,10 +95,12 @@ var JiraApi = require('jira-client');
     class JiraHandler {
         constructor(links, titles) {
             this.jirasObject = [];
+            this.jiraTicketNumber = [];
             this.links = links;
             this.titles = titles;
             this.createJiraObject();
             this.fetchGitHubData();
+            this.retrieveJiraInfo();
         }
 
         createJiraObject() {
@@ -118,8 +122,11 @@ var JiraApi = require('jira-client');
                   });
                   resolve(commits);
             })
-            .then((listOfCommits)=>{
-                let jiraTicketNumber=[];
+        }
+
+        retrieveJiraInfo(){           
+            this.fetchGitHubData().then((listOfCommits)=>{
+                let jiraTicketNumber = [];
                 const regEx=/([A-Z][A-Z0-9]+-[0-9]+)/g
                 for(let index=0;index<listOfCommits.data.length;index++){                   
                     // console.log("Commmit Massage : "+listOfCommits.data[index].commit.message);
@@ -129,13 +136,19 @@ var JiraApi = require('jira-client');
                     if(ticketNum != null && indx === -1){    
                         jiraTicketNumber.push(ticketNum);
                     }else{
-                        console.log(ticketNum + ' Jira ticket number already exists');
+                        console.log(ticketNum + 'Jira ticket number already exists or No Ticket Number');
                     }
                     
                 }
                 console.log(jiraTicketNumber);
+
+                for (let i=0; i<jiraTicketNumber.length;i++){
+                    getStatus(jiraTicketNumber[i]);
+                }
             })
+
         }
+
     }
 
     const jiraHandler = new JiraHandler(jiraLinks, jiraTitles)
