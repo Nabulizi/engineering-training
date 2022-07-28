@@ -29,23 +29,24 @@ var JiraApi = require('jira-client');
         strictSSL: true
      });
 
-     async function getStatus(issueNumber){
-        return new Promise( async (resolve)=>{
-            const myIssue= await jira.findIssue(issueNumber);
-            resolve(myIssue);
-        })       
-        .then((issue)=> {
-            // console.log('Status: ' + issue.fields.status.name);
-            console.log('Summary: ' + issue.fields.summary);
-        })
-        .catch((err)=> {
-            console.error(err);
+    async function findJiraIssue(issueNumber){
+        return new Promise( async (resolve,reject)=>{
+            jira.findIssue(issueNumber)   
+            .then((issue)=> {
+                // console.log('Status: ' + issue.fields.status.name);
+                const {summary} = issue.fields;
+                console.log('Summary: ' + summary);
+                resolve({
+                    title: summary,
+                    link: `https://totalwine.atlassian.net/browse/${issueNumber}`
+                })
+            })
+            .catch((err)=> {
+                console.error(err);
+                reject(err);
+            });
         });
-
     }
-    
-    // getStatus("DIG-72242");
-
 
     const jiraTitles = [
         "Create and publish a public repository in GitHub under your personal account named 'Engineering Training'",
@@ -127,9 +128,11 @@ var JiraApi = require('jira-client');
         retrieveJiraInfo(){           
             this.fetchGitHubData().then((listOfCommits)=>{
                 let jiraTicketNumber = [];
+                let promises=[];
                 const regEx=/([A-Z][A-Z0-9]+-[0-9]+)/g
+                //get all jira tickets number from commit messages through loops
                 for(let index=0;index<listOfCommits.data.length;index++){                   
-                    // console.log("Commmit Massage : "+listOfCommits.data[index].commit.message);
+                    //  console.log("Commmit Massage : "+listOfCommits.data[index].commit.message);
                     let ticketNum=listOfCommits.data[index].commit.message.match(regEx);
                     let indx=jiraTicketNumber.indexOf(ticketNum);
 
@@ -140,11 +143,16 @@ var JiraApi = require('jira-client');
                     }
                     
                 }
-                console.log(jiraTicketNumber);
+                console.log(jiraTicketNumber);  
 
+                //get all title and link using 
                 for (let i=0; i<jiraTicketNumber.length;i++){
-                    getStatus(jiraTicketNumber[i]);
+                    promises.push(findJiraIssue(jiraTicketNumber[i]));
                 }
+                Promise.all(promises).then((values)=>{
+                    console.log(values);
+                })
+
             })
 
         }
