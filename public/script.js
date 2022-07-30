@@ -43,10 +43,10 @@
             let response = "";
             return new Promise((resolve) => {
                data.jirasObject.forEach(element => {
-                    let { link, title, icon } = element;
+                    let { link, title, icon, status } = element;
                     response += `<li class="item"><a href= ${link}> 
-            <i class="${icon}">
-            </i> ${title} 
+            <button type="button" class="${icon}">${status}</button>
+             ${title} 
             </a></li>`;
                 });
                 resolve(response);

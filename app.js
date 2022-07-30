@@ -10,8 +10,11 @@ router.get('/',(req,res)=>{
 });
 
 router.get('/getJiraTickets',(req,res)=>{
-  res.json({"jirasObject":dataHandler.jirasObject});
+  dataHandler.retrieveJiraInfo().then((values)=>{
+    res.json({"jirasObject":values});
+  }) 
 });
+
 
 app.use('/',router);
 console.log(__dirname);
