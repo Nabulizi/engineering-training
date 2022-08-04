@@ -12,38 +12,36 @@ ReactDOM.render(
 
     console.log('Engineering Training!');
 
-    function initModalButton() {       
-        return new Promise((resolve)=>{
-            var dataLoaded = false;
-            const openModalButton = document.getElementById("modalButton");
-            openModalButton.addEventListener("click", () => {
-                if (dataLoaded === false) {
-                    utils.loadData(()=>{
-                        resolve();
-                        dataLoaded = true;
-                    })
-                }               
-            });
+    // function initModalButton() {       
+    //     return new Promise((resolve)=>{
+    //         var dataLoaded = false;
+    //         const openModalButton = document.getElementById("modalButton");
+    //         openModalButton.addEventListener("click", () => {
+    //             if (dataLoaded === false) {
+    //                 utils.loadData(()=>{
+    //                     resolve();
+    //                     dataLoaded = true;
+    //                 })
+    //             }               
+    //         });
 
-        })
-    }
+    //     })
+    // }
 
-    function toggleFunction() {
-        let modalContainer = document.getElementById("modal");
-        modalContainer.classList.toggle("hidden");
-    }
+    // function toggleFunction() {
+    //     let modalContainer = document.getElementById("modal");
+    //     modalContainer.classList.toggle("hidden");
+    // }
 
-    const openModalButton = document.getElementById("modalButton");
-    const closeModalButton = document.getElementsByClassName("closeModal");
+    // const openModalButton = document.getElementById("modalButton");
+    // const closeModalButton = document.getElementsByClassName("closeModal");
 
-    closeModalButton.item(0).addEventListener("click", toggleFunction);
+    // closeModalButton.item(0).addEventListener("click", toggleFunction);
 
-    console.log("modalButton", openModalButton);
-    console.log("closeModalButton", closeModalButton);
 
-    console.log("BEFORE initModalButton is called");
-    await initModalButton();
-    console.log("AFTER initModalButton is called !!!");
+    // console.log("BEFORE initModalButton is called");
+    // await initModalButton();
+    // console.log("AFTER initModalButton is called !!!");
 
 })();
 
