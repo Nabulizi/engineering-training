@@ -72,9 +72,6 @@ var JiraApi = require('jira-client');
         constructor(links, titles) {
             this.jirasObject = [];
             this.jiraTicketNumber = [];
-            // this.createJiraObject();
-            // this.fetchGitHubData();
-            this.retrieveJiraInfo();
         }
 
         async fetchGitHubData(){
