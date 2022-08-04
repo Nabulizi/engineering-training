@@ -1,27 +1,25 @@
 import React from "react";
 import utils from "../utils.js";
+import store from '../store';
 
 export default class Button extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { dataloaded: false };
+    // this.state = { dataloaded: false };
     this.handleOnClick = this.handleOnClick.bind(this);
   }
 
   handleOnClick() {
     let modalContainer = document.getElementById("modal");
-    if (this.state.dataloaded) {
+    const dataLoaded=store.getState().dataLoaded;
+    if (dataLoaded) {
       return;
     }
 
     modalContainer.classList.toggle("hidden");
 
     utils.loadData(() => {
-      this.setState({
-        dataLoaded: true,
-      });
-      //   dataLoaded = true;
-      resolve();
+      store.dispatch({type:"TOGGLE_DATALOADED"});
     });
   }
   render() {
