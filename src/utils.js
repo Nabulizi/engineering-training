@@ -1,12 +1,12 @@
 
-function toggleFunction() {
-    let modalContainer = document.getElementById("modal");
-    modalContainer.classList.toggle("hidden");
-}
+// function toggleFunction() {
+//     let modalContainer = document.getElementById("modal");
+//     modalContainer.classList.toggle("hidden");
+// }
 
 const utils = {
     loadData: async function (callback) {
-        toggleFunction();
+        // toggleFunction();
 
         const response = await fetch('/getJiraTickets');
         const data = await response.json();
@@ -20,8 +20,8 @@ const utils = {
         
         callback();
       
-        let modalContainer = document.getElementById("modal");
-        modalContainer.classList.add("hidden");           
+        // let modalContainer = document.getElementById("modal");
+        // modalContainer.classList.add("hidden");           
     },
 
     renderData: function (data) {
