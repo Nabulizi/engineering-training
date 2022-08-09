@@ -4,6 +4,7 @@ import Button from './components/button';
 import { Provider } from 'react-redux'
 import store from './store';
 import Modal from './components/Modal';
+import Logo from './components/logo';
 
 // ReactDOM.render(
 //     <Button/>,
@@ -15,6 +16,7 @@ root.render(
   <Provider store={store}>
     <Button/>
     <Modal/>
+    <Logo/>
   </Provider>
 );
 
