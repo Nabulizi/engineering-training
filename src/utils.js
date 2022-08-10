@@ -1,12 +1,6 @@
 
-// function toggleFunction() {
-//     let modalContainer = document.getElementById("modal");
-//     modalContainer.classList.toggle("hidden");
-// }
-
 const utils = {
     loadData: async function (callback) {
-        // toggleFunction();
 
         const response = await fetch('/getJiraTickets');
         const data = await response.json();
@@ -18,10 +12,7 @@ const utils = {
             return response;
         })
         
-        callback();
-      
-        // let modalContainer = document.getElementById("modal");
-        // modalContainer.classList.add("hidden");           
+        callback();    
     },
 
     renderData: function (data) {
