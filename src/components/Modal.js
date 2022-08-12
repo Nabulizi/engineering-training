@@ -18,7 +18,7 @@ class Modal extends React.Component {
 
 const mapStateToProps=(state)=>{
     return{
-        loading:state.loading
+        loading:state.dataLoaded.loading
     }
 }
 

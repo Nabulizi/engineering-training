@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     dataLoaded: false,
     loading: false,
+    data:{},
 };
   
 function dataLoadedReducer(state = INITIAL_STATE, action) {
@@ -14,10 +15,11 @@ function dataLoadedReducer(state = INITIAL_STATE, action) {
         return {
             ...state,
             loading: action.loading,
-        };case "DATA_LOADING":
+        };
+    case "DATA_SUCCESS":
         return {
             ...state,
-            loading: action.loading,
+            data: action.data,
         };
       default:
         return state
