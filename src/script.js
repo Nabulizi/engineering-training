@@ -6,6 +6,7 @@ import store from './store';
 import Modal from './components/Modal';
 import Logo from './components/logo';
 import List from './components/list';
+import ErrorMessage from './components/errorMessage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
@@ -14,6 +15,7 @@ root.render(
     <Modal/>
     <Logo/>
     <List/>
+    <ErrorMessage/>
   </Provider>
 );
 

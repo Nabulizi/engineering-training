@@ -2,6 +2,7 @@ const INITIAL_STATE = {
     dataLoaded: false,
     loading: false,
     data:{},
+    error: "This is an error message", 
 };
   
 function dataLoadedReducer(state = INITIAL_STATE, action) {
@@ -20,6 +21,12 @@ function dataLoadedReducer(state = INITIAL_STATE, action) {
         return {
             ...state,
             data: action.data,
+        };
+    case "DATA_FAILURE":
+        return {
+            ...state,
+            error: action.error,
+            loading: false,
         };
       default:
         return state
