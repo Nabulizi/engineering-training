@@ -1,7 +1,7 @@
 import store from './store'
 
 const utils = {
-    loadData: async function (callback) {
+    loadData: async function () {
       
         return new Promise(async (resolve)=>{
             const response = await fetch('/getJiraTickets').catch((err)=>{
@@ -16,9 +16,7 @@ const utils = {
                 store.dispatch({ type: "DATA_SUCCESS", data })
                 resolve(data);
             }); 
-        })
-             
-        callback(data);    
+        })  
     },
 }
 

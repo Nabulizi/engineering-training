@@ -2,10 +2,11 @@ const INITIAL_STATE = {
     dataLoaded: false,
     loading: false,
     data:{},
-    error: "This is an error message", 
+    error: null 
 };
   
 function dataLoadedReducer(state = INITIAL_STATE, action) {
+    console.log('action', action);
   switch (action.type) {
     case "TOGGLE_DATALOADED":
         return {
