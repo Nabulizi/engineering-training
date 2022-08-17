@@ -20,12 +20,12 @@ li:hover {
     color: black;
 }
 
-.myDiv {
+/* .myDiv {
     position: relative;
     background-color: white;
     height: 100vh;
     width: 100%;
-}
+} */
 
 .hidden {    
     display: none;      

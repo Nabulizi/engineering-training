@@ -2,6 +2,7 @@ import React from "react";
 import utils from "../utils.js";
 import store from '../store';
 import { connect } from "react-redux";
+import ModalContainer from "./ModalContainer"
 
 class Modal extends React.Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Modal extends React.Component {
     if (this.props.loading===false) {
         return;
       }
-    return <div id="modal" ></div>;
+    return <ModalContainer id="modal" ></ModalContainer>;
   }
 }
 

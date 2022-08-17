@@ -7,6 +7,7 @@ import Modal from './components/Modal';
 import Logo from './components/logo';
 import List from './components/list';
 import ErrorMessage from './components/errorMessage';
+import ModalContainer from './components/ModalContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
