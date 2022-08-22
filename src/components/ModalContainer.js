@@ -5,7 +5,7 @@ import styled from "styled-components";
 const ModalContainer = styled.div`
   position: relative;
   background-color: red;
-  height: 100vh;
+  height: 10vh;
   width: 100%;
 `;
 

@@ -95,10 +95,10 @@ var JiraApi = require('jira-client');
                 for(let index=0;index<listOfCommits.data.length;index++){                   
                     //  console.log("Commmit Massage : "+listOfCommits.data[index].commit.message);
                     let ticketNum=listOfCommits.data[index].commit.message.match(regEx);
-                    let indx=jiraTicketNumber.indexOf(ticketNum);
-
-                    if(ticketNum != null && indx === -1){    
-                        jiraTicketNumber.push(ticketNum);
+                    let indx = ticketNum != null? jiraTicketNumber.indexOf(ticketNum[0]):1;
+                    // console.log("indexOf : " ,ticketNum[0]);  
+                    if(ticketNum != null && indx==-1){    
+                        jiraTicketNumber.push(ticketNum[0]);
                     }else{
                         console.log(ticketNum + 'Jira ticket number already exists or No Ticket Number');
                     }

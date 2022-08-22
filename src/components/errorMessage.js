@@ -6,7 +6,7 @@ function ErrorMessage(props) {
     if(props.error){
         return <div className="alert alert-danger" role="alert">This is a danger alert—check it out!</div>;
     }else{
-        return;
+        return ;
     }
 }
 
