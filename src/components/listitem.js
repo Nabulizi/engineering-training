@@ -1,7 +1,10 @@
 import React from "react";
 
 export default function ListItem(props){
-    return <li className="item" ><a href={props.link} className={props.icon}>     
-     {props.title} 
-    </a></li>
+    return <li >        
+        <a href={props.link}><span className={`badge text-bg-${props.icon}`}>{props.iconText}</span>{props.title}</a>
+    </li>
 }
+
+
+// className={props.icon}   ,
